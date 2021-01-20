@@ -1,0 +1,14 @@
+.page-header {
+  height: 150px;
+  background-color: skyblue;
+}
+
+#typo {
+  font-size: 30px;
+}
+
+.row {
+  min-height: 150px;
+  margin: 20px 0;
+  border: 1px solid slateblue;
+}
