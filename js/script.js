@@ -2,18 +2,18 @@ $(function(){
   console.log('このファイルを読み込んでいます');
 
   // Ajax
-  $('.btn').click(function() {
-    $('#result').load('more.html');
-    // ここに書くとloadで読み込まれるが、帰ってくる前に下の実行が処理されてしまうので赤字にならない
-    $('#message').css('color','red');
-  });
+  // $('.btn').click(function() {
+  //   $('#result').load('more.html');
+  //   // ここに書くとloadで読み込まれるが、帰ってくる前に下の実行が処理されてしまうので赤字にならない
+  //   $('#message').css('color','red');
+  // });
 
-  $('#lesson18').click(function() {
-    $('#result18').load('more.html',function() {
-      $('#message18').css('color','blue');
-    });
+  // $('#lesson18').click(function() {
+  //   $('#result18').load('more.html',function() {
+  //     $('#message18').css('color','blue');
+  //   });
 
-  });
+  // });
 
   $('#greet').click(function() {
     // $.get('', {}, function() {});
@@ -32,8 +32,6 @@ $(function(){
     });
   });
 
-
-
   $('#likeSubmit').click(function() {
     $.post('like.php', {
       like: $('#like').val(),
@@ -42,6 +40,30 @@ $(function(){
     });
   });
 
+});
+
+$(function() {
+  console.log('2つ目のスコープ。');
+
+  // HTMLで表示した値を読み込むことができる
+  var goodcount = $('#good').data('goodcount');
+  var testword = $('#good').data('testword');
+
+  // 型を調べる
+  console.log(typeof(goodcount));
+  console.log(typeof(testword));
+
+  // 値を調べる
+  console.log(goodcount + ', ' + testword);
+
+  
+  $('#good').click(function () {
+    $.post('changeTableTest.php', {
+      number: goodcount,
+    }, function(data) {
+      $('#goodNumberSpace').html(data);
+    });
+  })
 
 
 

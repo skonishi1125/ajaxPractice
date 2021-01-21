@@ -1,3 +1,15 @@
+<?php
+  require('../app/dbconnect.php');
+  $id = 1;
+
+  //いいね初期値
+  $deflikes = $db->prepare('SELECT number FROM goods WHERE id=?');
+  $deflikes->execute( array($id) );
+  $deflike = $deflikes->fetch();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -48,7 +60,18 @@
       <div claas="col-md-6" id="submitResult"></div>
     </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          ※ID = テーブルはlikeだけどこっちのIDはgoodです！間違えないで<br>
+          ボタンを押すとDBの値が増えます<br>
+        </p>
+        <button class="btn btn-outline-danger btn-sm" id="good" data-goodcount="10" data-testword="javascriptに送るサンプルワードです">good!</button>
 
+        <p>現在の値は""<span id="goodNumberSpace"><?= $deflike['number']; ?></span>""です。</p>
+
+      </div>
+    </div>
 
 
   </div>
