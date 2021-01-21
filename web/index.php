@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creative jQuery</title>
+  <title>ajax基礎</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/style.css">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
@@ -11,11 +11,46 @@
 <body>
   
   <div class="container">
+
     <div class="row">
       <div class="col-md-12">
-        <h1>aaaaaaaaaaa</h1>
+        <h3>ajaxの練習です。</h3>
+        <button class="btn btn-primary">もっと読む</button>
+        <div id="result"></div>
+      </div>
+
+      <div class="col-md-12">
+        <br>
+        <p>レッスン18の説明</p>
+        <button id="lesson18">ボタン</button>
+        <div id="result18"></div>
       </div>
     </div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <input type="text" name="name" id="name">
+        <br>
+        <input type="button" value="GETで送る!" id="greet">
+        <input type="button" value="POSTで送る!" id="greet2">
+      </div>
+      <div claas="col-md-6" id="greetResult"></div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <p>好きなものは？</p>
+        <input type="text" name="like" id="like">
+        <input type="button" value="提出する" id="likeSubmit">
+      </div>
+      <div claas="col-md-6" id="submitResult"></div>
+    </div>
+
+
+
+
   </div>
 
   <!-- メインのフッター -->
