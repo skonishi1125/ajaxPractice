@@ -1,0 +1,152 @@
+/* 
+要素型セレクタ  h1 {...}
+classセレクタ   .container {...}
+idセレクタ      #submitBtn {...}
+★属性セレクタ  [href] {...}
+  []の中に属性の名前や値を書く。特定の属性要素をスタイリングできる
+全称セレクタ    * {...}
+  全ての要素のスタイルをつけることができる
+*/
+
+h1 {
+  color: skyblue;
+}
+
+#title {
+  text-align: center;
+}
+
+* {
+  font-size: 12px;
+}
+
+[target] {
+  color: red;
+}
+
+[href="ccc.com"] {
+  font-size: 20px;
+}
+
+/* ^= 前方指定 */
+[href^="https"] {
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+/* $= 後方指定 linkで終わるもの。*/
+[href$="link"] {
+  font-size: 30px;
+  font-weight: 200;
+}
+
+/* *= 部分一致 */
+[href*=".com"] {
+  border-width: 2px;
+  padding: 4px;
+}
+
+/* 
+.info , p {...} カンマ
+  .infoとpにスタイルを適用
+h1.info {...}
+  ピリオド->h1かつ、class="info"
+main > h1 {...}
+  main直下のh1の階層
+  jQueryでいうchild()的な感じ
+  find()のように、mainの下だったらどの階層でもいい場合は以下のように書く
+  main h1 {...}
+p + p {...}
+  同じ階層の中で、こちらの直後にあるこちら
+*/
+p + p {
+  /* 
+  いい感じに線を引くことができる 
+  1つ目のpの直後に適用、2個目のpの直後に適用
+  */
+  border-top: 1px solid orange;
+}
+
+/* 
+擬似要素
+特定の部分をスタイリングできる
+::before
+::afterなどが有名
+*/
+
+h1::before,
+h2::before {
+  /* contentの指定が必須 */
+  content: '-';
+}
+
+h1::after,
+h2::after {
+  /* content: '~'; */
+  /* attr():カスタムデータの値を呼び出す？ */
+  content: attr(data-subtitle);
+}
+
+/* 
+カスタムデータ属性
+data-で始まれば独自の属性を使用できる
+
+*/
+
+/* 
+nth-child
+*/
+/* 
+body > :nth-child(3) {
+  background: pink;
+} 
+*/
+
+body > :nth-child(3n) {
+  background: pink;
+}
+
+body > :nth-child(even) {
+  font-weight: bold;
+}
+
+body > :first-child {
+  font-size: 20px;
+  background-color: limegreen;
+}
+
+body > :last-child {
+  background-color: purple;
+}
+
+/* 3番目のh2にスタイルをつけたい */
+
+section > h2:nth-of-type(3) {
+  border: 1px dotted black;
+}
+
+
+section > h2:first-of-type {
+  border: 1px dotted blue;
+}
+
+/* 空の要素を指定 */
+
+li:empty {
+  background-color: skyblue;
+}
+
+/* 否定 */
+
+li:not(empty) {
+  /* 指定要素以外をgreenに */
+  background-color: mediumseagreen;
+}
+
+/* 優先度
+classなどの中よりidが最優先
+htmlにstyleと書くとさらに優先
+!importantがそれより優先
+知りたくなったら
+https://dotinstall.com/lessons/basic_css_selectors/52712
+*/
