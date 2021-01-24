@@ -65,6 +65,40 @@ $(function() {
     });
   })
 
+});
+
+$(function() {
+  // thisでのボタン識別テスト
+
+  $('.count-btn').click(function() {
+    // li指定 今回は使わない
+    const parentLi = $(this).parent();
+
+    // pを指定(button要素の次)
+    const nextP = $(this).next('p');
+
+    // pのdata-numberを取得
+    const number = $(nextP).data('number');
+
+    // pの中のspanを指定
+    const spanInP = $(nextP).find('span');
+
+    console.dir('button要素の次の値(nextP) : ' + nextP);
+    console.dir(nextP);
+    console.dir('pの中のspanの値(spanInP) : ' + spanInP);
+    console.dir(spanInP);
+    console.dir('pのdata-number : ' + number);
+    console.dir(number);
+    console.log('-----------');
+
+
+    $.get('countBtn.php', {
+      id: number,
+    }, function(data) {
+      $(spanInP).html(data);
+    });
+
+  });
 
 
 });
